@@ -1,0 +1,29 @@
+<div class="row">
+
+  <nav class="mb-2 d-flex justify-content-around">
+    <button (click)="cambiarPagina(-1)" > {{'<<'}} </button>
+    <p>Página {{pagina + 1}} de {{totalPaginas}}</p>
+    <button (click)="cambiarPagina(+1)" > {{'>>'}} </button>
+  </nav>
+
+  <div *ngFor="let gif of resultados"
+       class="col-xl-3 col-md-4 col-sm-6 animate__animated animate__fadeIn animate__slow mb-2">
+
+      <div class="card">
+          <img [src]="gif.images.downsized_medium.url"
+               [alt]="gif.title"
+               class="card-img-top">
+          <div class="card-body">
+              <p class="card-text">
+                  {{ gif.title }}
+              </p>
+          </div>
+      </div>
+
+  </div>
+
+  <ng-container *ngIf="notFound">
+    <h3>No hay resultados para "{{notFound}}"</h3>
+  </ng-container>
+
+</div>
